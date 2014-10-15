@@ -71,7 +71,7 @@ Card.prototype.dragStart = function () {
 Card.prototype.dragStop = function (cardImg) {
 
     //hide our helper fades
-    mainState.fadeGrid.visible = false;
+   // mainState.fadeGrid.visible = false;
     mainState.isDragging = false;
     for (var i = 0; i < mainState.emptyfadeGridHexes.length; i++) {
         var boardHex = mainState.emptyfadeGridHexes.getAt(i);
@@ -101,6 +101,7 @@ Card.prototype.dragStop = function (cardImg) {
                 this.cardImg.position = CopyObject(boardHex.position);
                 mainState.board.PlaceCard(i, this);
                 cardImg.inputEnabled = false;
+                fx.play("blip"); //play sound
             break;
         }
     }

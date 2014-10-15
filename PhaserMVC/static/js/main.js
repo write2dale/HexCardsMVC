@@ -35,6 +35,7 @@ var mainState = {
     playerTwoScore: {},
     gameOver: false,
     isDragging: false,
+    fx: false, //add sound
 
     preload: function () {
         
@@ -47,9 +48,16 @@ var mainState = {
         game.load.spritesheet('flatFrames', 'static/img/frames.png', 146, 168);
         game.load.spritesheet('flatBGs', 'static/img/cardback.png', 146, 168);
         game.load.spritesheet('cardBorders', 'static/img/borders.png', 146, 168);
+
+        game.load.audio('sfx', 'static/mp3/blip.mp3');
     },
 
     create: function () {
+
+        //Add sound
+        fx = game.add.audio('sfx');
+        fx.addMarker('blip', 0, 1.0);
+
         game.stage.backgroundColor = '#1E1E1E';
         this.buildBGPattern();
 
@@ -110,7 +118,7 @@ var mainState = {
 
     buildfadeGrid: function () {
         this.fadeGrid = game.add.sprite(game.world.centerX, Math.round(game.world.height / 2.7), 'fadeGrid');
-        this.fadeGrid.visible = false;
+       // this.fadeGrid.visible = false;
         this.fadeGrid.anchor.setTo(0.5, 0.5);
         this.fadeGrid.scale.setTo(globalScale);
         this.fadeGrid.alpha = 1;
